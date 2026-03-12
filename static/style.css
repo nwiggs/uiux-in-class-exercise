@@ -574,3 +574,113 @@ select:hover,
 textarea:hover {
   border-color: #64748b;
 }
+/* =========================
+   Dark Mode Support
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface-2: #334155;
+    --text: #f1f5f9;
+    --muted: #cbd5f5;
+    --border: #475569;
+
+    --primary: #60a5fa;
+    --primary-hover: #3b82f6;
+    --primary-soft: #1e3a8a;
+
+    --focus: #facc15;
+    --danger: #f87171;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  header,
+  footer {
+    background: var(--surface);
+  }
+
+  .section-block,
+  .card,
+  form,
+  .field-group {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .highlight-box {
+    background: #1e293b;
+    border-left-color: var(--primary);
+  }
+
+  input,
+  textarea,
+  select {
+    background: #0f172a;
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #94a3b8;
+  }
+
+  .nav-link {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .nav-link:hover {
+    background: var(--surface-2);
+  }
+
+  .nav-link.active {
+    background: var(--primary-soft);
+    color: #ffffff;
+  }
+
+  .primary-action {
+    background: var(--primary);
+  }
+
+  .primary-action:hover {
+    background: var(--primary-hover);
+  }
+
+  .small-text,
+  .secondary-text,
+  .help-text {
+    color: #cbd5e1;
+  }
+}
+/* =========================
+   Dark Mode Fix for Page Header
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .page-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+
+  .page-header-title {
+    color: var(--text);
+  }
+
+  .page-header-subtitle {
+    color: #cbd5e1;
+  }
+
+}
