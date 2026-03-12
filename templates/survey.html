@@ -18,7 +18,7 @@
         <span class="secondary-text">This survey should only take a few minutes to complete.</span>
     </div>
 
-    <form method="POST" action="{{ url_for('survey') }}">
+    <form method="POST" action="{{ url_for('survey') }}" novalidate>
         <div class="field-group">
             <h3 class="field-group-title">Participant Information</h3>
 
@@ -28,8 +28,15 @@
                     <span class="required-marker" aria-hidden="true">*</span>
                     <span class="required-text">(required)</span>
                 </label>
-                <input type="text" id="name" name="name" required>
-                <small class="help-text">Enter your first and last name.</small>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Enter your full name"
+                    aria-describedby="name-help"
+                >
+                <small id="name-help" class="help-text">Enter your first and last name.</small>
             </div>
 
             <div class="form-group">
@@ -38,8 +45,15 @@
                     <span class="required-marker" aria-hidden="true">*</span>
                     <span class="required-text">(required)</span>
                 </label>
-                <input type="email" id="email" name="email" required>
-                <small class="help-text">We will only use this if follow-up is needed.</small>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Enter your email address"
+                    aria-describedby="email-help"
+                >
+                <small id="email-help" class="help-text">We will only use this if follow-up is needed.</small>
             </div>
         </div>
 
@@ -48,8 +62,14 @@
 
             <div class="form-group">
                 <label for="department">Department</label>
-                <input type="text" id="department" name="department">
-                <small class="help-text">Optional: list your team or department.</small>
+                <input
+                    type="text"
+                    id="department"
+                    name="department"
+                    placeholder="Optional department name"
+                    aria-describedby="department-help"
+                >
+                <small id="department-help" class="help-text">Optional: list your team or department.</small>
             </div>
 
             <div class="form-group">
@@ -58,8 +78,14 @@
                     <span class="required-marker" aria-hidden="true">*</span>
                     <span class="required-text">(required)</span>
                 </label>
-                <textarea id="comments" name="comments" required></textarea>
-                <small class="help-text">Describe your experience or suggestions for improvement.</small>
+                <textarea
+                    id="comments"
+                    name="comments"
+                    required
+                    placeholder="Describe your experience or suggestions for improvement"
+                    aria-describedby="comments-help"
+                ></textarea>
+                <small id="comments-help" class="help-text">Describe your experience or suggestions for improvement.</small>
             </div>
         </div>
 

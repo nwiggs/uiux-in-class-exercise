@@ -369,3 +369,208 @@ input[type="button"]:hover,
 .content-stack > * + * {
   margin-top: 1rem;
 }
+/* =========================
+   Step 5: Interactivity
+   ========================= */
+
+/* Smooth but subtle interaction feedback */
+a,
+button,
+input,
+select,
+textarea,
+.nav-link,
+.btn,
+.primary-action {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.12s ease;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  .nav-link,
+  .btn,
+  .primary-action {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Clickable things should look clickable */
+a,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+label[for],
+.nav-link,
+.btn,
+.primary-action {
+  cursor: pointer;
+}
+
+/* Links */
+a:hover {
+  text-decoration-thickness: 3px;
+}
+
+a:active,
+.nav-link:active {
+  transform: translateY(1px);
+}
+
+/* Buttons */
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+.btn:hover,
+.primary-action:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+.btn:active,
+.primary-action:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Strong focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.nav-link:focus-visible,
+.btn:focus-visible,
+.primary-action:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Disabled buttons and controls */
+button:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled,
+.btn.disabled,
+.primary-action:disabled {
+  background: #cbd5e1;
+  color: #475569;
+  border-color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.8;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Optional disabled link-style button */
+.btn.disabled {
+  pointer-events: none;
+  text-decoration: none;
+}
+
+/* Required field label treatment */
+label .required-text,
+label .required-marker {
+  display: inline;
+}
+
+.required-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Better invalid styling: not color alone */
+input:required,
+select:required,
+textarea:required {
+  border-left: 4px solid #64748b;
+}
+
+/* Invalid fields */
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border: 2px solid var(--danger);
+  background-image: linear-gradient(to right, rgba(176, 0, 32, 0.06), rgba(176, 0, 32, 0.01));
+}
+
+/* Invalid + focus */
+input:invalid:focus-visible,
+select:invalid:focus-visible,
+textarea:invalid:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Valid fields */
+input:valid,
+select:valid,
+textarea:valid {
+  border-color: #15803d;
+}
+
+/* Only show stronger validation look once user interacts */
+input:not(:focus):not(:placeholder-shown):invalid,
+textarea:not(:focus):not(:placeholder-shown):invalid,
+select:invalid {
+  box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.08);
+}
+
+/* Help/error message styles */
+.field-error {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.field-error::before {
+  content: "⚠ ";
+  font-weight: 700;
+}
+
+/* Secondary text stays quieter */
+.small-text,
+.secondary-text,
+.note,
+.help-text {
+  color: var(--muted);
+}
+
+/* Improve nav hover/focus clarity */
+.nav-link:hover,
+.nav-link:focus-visible {
+  background: var(--surface-2);
+  border-color: var(--primary);
+}
+
+.nav-link.active:hover,
+.nav-link.active:focus-visible {
+  background: var(--primary-soft);
+}
+
+/* Improve input hover so users know fields are interactive */
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #64748b;
+}
