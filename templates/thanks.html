@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Thanks | QI Dashboard{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Thank You</h2>
+    <p>Your feedback was submitted for the QI dashboard review.</p>
+
+    <h3>Submission Summary</h3>
+    <ul>
+        <li><strong>Name:</strong> {{ submission.name }}</li>
+        <li><strong>Role:</strong> {{ submission.role }}</li>
+        <li><strong>Satisfaction:</strong> {{ submission.satisfaction }}</li>
+        <li><strong>Comments:</strong> {{ submission.comments }}</li>
+    </ul>
+
+    <p><a href="{{ url_for('survey') }}">Submit another response</a></p>
+</section>
+{% endblock %}
