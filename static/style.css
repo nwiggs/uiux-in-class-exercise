@@ -1,15 +1,18 @@
 :root {
   --bg: #ffffff;
   --surface: #f5f7fa;
+  --surface-2: #eef2f7;
   --text: #111827;
   --muted: #4b5563;
   --border: #cbd5e1;
   --primary: #0f62fe;
   --primary-hover: #0b57d0;
+  --primary-soft: #dbeafe;
   --focus: #ffbf47;
   --danger: #b00020;
   --max-width: 900px;
   --radius: 10px;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 *,
@@ -32,22 +35,15 @@ body {
   background-color: var(--bg);
 }
 
-header,
-main,
-footer {
+/* Shared page width */
+.site-header-inner,
+.page-content,
+.site-footer {
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
 }
 
-header,
-footer {
-  padding: 1rem 0;
-}
-
-main {
-  padding: 2rem 0 3rem;
-}
-
+/* Typography consistency */
 h1,
 h2,
 h3 {
@@ -56,29 +52,28 @@ h3 {
   color: var(--text);
 }
 
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
 p {
+  margin-top: 0;
+  margin-bottom: 1rem;
   max-width: 70ch;
 }
 
-a {
-  color: var(--primary-hover);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
-}
-
-a:hover {
-  text-decoration-thickness: 3px;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
+/* Skip link */
 .skip-link {
   position: absolute;
   top: -48px;
@@ -97,6 +92,72 @@ textarea:focus-visible {
   top: 0;
 }
 
+/* Shared focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Header */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header-inner {
+  padding: 1.25rem 0 1rem;
+}
+
+.site-title {
+  margin-bottom: 0.25rem;
+}
+
+.site-subtitle {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Reusable nav component */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  background: var(--surface-2);
+}
+
+.nav-link.active {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-hover);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Main content */
+.page-content {
+  padding: 2rem 0 3rem;
+}
+
+/* Shared containers */
 .card,
 form,
 section {
@@ -105,8 +166,10 @@ section {
   border-radius: var(--radius);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
+/* Forms */
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -157,9 +220,11 @@ textarea::placeholder {
   margin-left: 0.25rem;
 }
 
+/* Consistent buttons across pages */
 button,
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+.btn {
   display: inline-block;
   padding: 0.8rem 1.1rem;
   border: none;
@@ -168,15 +233,18 @@ input[type="button"] {
   color: #ffffff;
   font: inherit;
   font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 }
 
 button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+.btn:hover {
   background: var(--primary-hover);
 }
 
+/* Alerts */
 .alert {
   border-left: 6px solid var(--primary);
   background: #eef4ff;
@@ -194,8 +262,10 @@ input[type="button"]:hover {
   background: #fff1f2;
 }
 
-footer {
+/* Footer */
+.site-footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.95rem;
+  padding: 1rem 0 2rem;
 }

@@ -9,20 +9,35 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
-        <h1>Health Informatics QI Dashboard</h1>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('survey') }}">Survey</a>
-            <a href="{{ url_for('about') }}">About</a>
-        </nav>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div>
+                <h1 class="site-title">Health Informatics QI Dashboard</h1>
+                <p class="site-subtitle">Community Health System Quality Improvement Project</p>
+            </div>
+
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="{{ url_for('home') }}"
+                   class="nav-link {% if active_page == 'home' %}active{% endif %}">
+                   Home
+                </a>
+                <a href="{{ url_for('survey') }}"
+                   class="nav-link {% if active_page == 'survey' %}active{% endif %}">
+                   Survey
+                </a>
+                <a href="{{ url_for('about') }}"
+                   class="nav-link {% if active_page == 'about' %}active{% endif %}">
+                   About
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" class="page-content">
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <p>Quality Improvement Team • Community Health System</p>
     </footer>
 </body>
