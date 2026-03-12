@@ -1,43 +1,72 @@
 {% extends "base.html" %}
+{% set active_page = "survey" %}
 
-{% block title %}Survey | QI Dashboard{% endblock %}
+{% block title %}Survey{% endblock %}
 
 {% block content %}
-<section>
-    <h2>QI Dashboard Feedback Survey</h2>
-    <form method="post" action="{{ url_for('survey') }}">
-        <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+<header class="page-header">
+    <h2 class="page-header-title">Quality Improvement Survey</h2>
+    <p class="page-header-subtitle">
+        Please complete the form below to share your feedback. Required fields are
+        marked clearly, and your responses will help support improvement efforts.
+    </p>
+</header>
+
+<section class="section-block">
+    <div class="highlight-box">
+        <strong>Before you begin:</strong>
+        <span class="secondary-text">This survey should only take a few minutes to complete.</span>
+    </div>
+
+    <form method="POST" action="{{ url_for('survey') }}">
+        <div class="field-group">
+            <h3 class="field-group-title">Participant Information</h3>
+
+            <div class="form-group">
+                <label for="name">
+                    Full Name
+                    <span class="required-marker" aria-hidden="true">*</span>
+                    <span class="required-text">(required)</span>
+                </label>
+                <input type="text" id="name" name="name" required>
+                <small class="help-text">Enter your first and last name.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Email Address
+                    <span class="required-marker" aria-hidden="true">*</span>
+                    <span class="required-text">(required)</span>
+                </label>
+                <input type="email" id="email" name="email" required>
+                <small class="help-text">We will only use this if follow-up is needed.</small>
+            </div>
         </div>
 
-        <div>
-            <label for="role">Role</label>
-            <select id="role" name="role" required>
-                <option value="" disabled selected>Select your role</option>
-                <option value="Nurse">Nurse</option>
-                <option value="Physician">Physician</option>
-                <option value="Analyst">Data Analyst</option>
-                <option value="Administrator">Administrator</option>
-                <option value="Other">Other</option>
-            </select>
+        <div class="field-group">
+            <h3 class="field-group-title">Feedback</h3>
+
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department">
+                <small class="help-text">Optional: list your team or department.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">
+                    Comments
+                    <span class="required-marker" aria-hidden="true">*</span>
+                    <span class="required-text">(required)</span>
+                </label>
+                <textarea id="comments" name="comments" required></textarea>
+                <small class="help-text">Describe your experience or suggestions for improvement.</small>
+            </div>
         </div>
 
-        <fieldset>
-            <legend>Satisfaction (1–5)</legend>
-            <label><input type="radio" name="satisfaction" value="1" required> 1</label>
-            <label><input type="radio" name="satisfaction" value="2"> 2</label>
-            <label><input type="radio" name="satisfaction" value="3"> 3</label>
-            <label><input type="radio" name="satisfaction" value="4"> 4</label>
-            <label><input type="radio" name="satisfaction" value="5"> 5</label>
-        </fieldset>
-
-        <div>
-            <label for="comments">Comments</label>
-            <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Share one thing that would improve your dashboard workflow."></textarea>
+        <div class="form-actions">
+            <button type="submit" class="primary-action">Submit Survey</button>
+            <p class="small-text">Your feedback helps guide future quality improvement work.</p>
         </div>
-
-        <button type="submit">Submit Survey</button>
     </form>
 </section>
 {% endblock %}
